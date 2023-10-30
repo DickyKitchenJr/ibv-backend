@@ -2,6 +2,7 @@ const express = require('express');
 const sequelize = require('./database/connection')
 const app = express();
 const router = require('./routes/index')
+const PORT = process.env.PORT || 3030;
 
 sequelize
   .authenticate()
@@ -13,3 +14,7 @@ sequelize
   });
 
   app.use('/', router)
+
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
