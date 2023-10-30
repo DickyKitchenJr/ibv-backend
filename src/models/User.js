@@ -25,4 +25,8 @@ User.beforeCreate(async (user) => {
   user.password = await bcrypt.hash(user.password, saltRounds);
 });
 
+// TODO: erase on production
+// opted to use the following as opposed to sequelize-cli for ease of use
+// User.sync();
+
 module.exports = User;
