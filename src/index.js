@@ -4,6 +4,9 @@ const app = express();
 const router = require('./routes/index')
 const PORT = process.env.PORT || 3030;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 sequelize
   .authenticate()
   .then(() => {
