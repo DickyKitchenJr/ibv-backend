@@ -5,9 +5,9 @@ const deleteUserController = require("../controllers/userControllers/deleteUserC
 const getUserController = require("../controllers/userControllers/getUserController");
 const modifyUserController = require("../controllers/userControllers/modifyUserController");
 
-router.get('/users/:username', getUserController)
-router.post("/users", addUserController);
-router.put('/users/:username', modifyUserController)
-router.delete("/users/:username", deleteUserController);
+router.get("/:username", getUserController);
+router.post("/", addUserController);
+router.put("/:username", modifyUserController);
+router.delete("/:username", deleteUserController);
 
 module.exports = router;
