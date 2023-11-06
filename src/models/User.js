@@ -25,6 +25,11 @@ User.beforeCreate(async (user) => {
   user.password = await bcrypt.hash(user.password, saltRounds);
 });
 
+// Check if the provided password matches the hashed password
+User.prototype.validPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
 // TODO: erase on production
 // opted to use the following as opposed to sequelize-cli for ease of use
 // User.sync();
