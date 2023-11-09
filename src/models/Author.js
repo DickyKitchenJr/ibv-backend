@@ -13,6 +13,9 @@ const Author = sequelize.define("Author", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      isEmail: true,
+    },
   },
   website: {
     type: DataTypes.STRING,
@@ -69,8 +72,8 @@ const Author = sequelize.define("Author", {
   isVerified: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 });
 
 module.exports = Author;
