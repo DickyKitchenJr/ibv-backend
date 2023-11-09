@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../database/connection');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../database/connection");
 
 const AwaitingAuthor = sequelize.define("AwaitingAuthor", {
   firstName: {
