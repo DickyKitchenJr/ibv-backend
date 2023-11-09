@@ -13,6 +13,9 @@ const AwaitingAuthor = sequelize.define("AwaitingAuthor", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      isEmail: true,
+    },
   },
   website: {
     type: DataTypes.STRING,
