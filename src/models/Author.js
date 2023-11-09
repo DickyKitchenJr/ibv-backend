@@ -50,10 +50,27 @@ const Author = sequelize.define("Author", {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  amazonBio: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  threads: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  bookbub: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   bio: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  isVerified: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  }
 });
 
 module.exports = Author;
