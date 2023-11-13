@@ -22,7 +22,9 @@ const addUserController = async (req, res) => {
         .json({ error: "Validation Error", details: error.errors });
     } else {
       // Handle other errors
-      res.status(500).json({ error: "Internal Server Error" });
+      res
+        .status(500)
+        .json({ error: "Internal Server Error", details: error.message });
     }
   }
 };

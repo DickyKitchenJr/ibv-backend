@@ -58,7 +58,10 @@ const addAwaitingAuthorController = async (req, res) => {
     console.error("Error adding author:", error);
     res
       .status(500)
-      .json({ error: "Failed to add author. Please try again later." });
+      .json({
+        error: "Failed to add author. Please try again later.",
+        details: error.message,
+      });
   }
 };
 

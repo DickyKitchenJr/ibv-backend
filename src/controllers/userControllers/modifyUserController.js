@@ -22,7 +22,9 @@ const modifyUserController = async (req, res) => {
     res.status(200).json(userToUpdate);
   } catch (error) {
     console.error("Error modifying user:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: error.message});
   }
 };
 

@@ -17,7 +17,9 @@ const getUserController = async (req, res) => {
     return res.status(200).json(users);
   } catch (error) {
     console.error("Error getting users:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: error.message });
   }
 };
 

@@ -17,7 +17,9 @@ const deleteUserController = async (req, res) => {
   } catch (error) {
     console.error("Error deleting user:", error);
     // Handle specific error cases if needed
-    res.status(500).json({ error: "Internal Server Error" });
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: error.message });
   }
 };
 
