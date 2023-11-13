@@ -13,6 +13,7 @@ const Author = sequelize.define("Author", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
     validate: {
       isEmail: true,
     },
