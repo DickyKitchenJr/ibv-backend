@@ -5,13 +5,16 @@ const modifyAuthorController = require("../controllers/authorControllers/modifyA
 const getAuthorController = require("../controllers/authorControllers/getAuthorController");
 const addAuthorController = require("../controllers/authorControllers/addAuthorController");
 const getAllAuthorController = require("../controllers/authorControllers/getAllAuthorController");
+const getUnverifiedAuthorsController = require("../controllers/authorControllers/getUnverifiedAuthorController");
 
 //for getting sanitized author data
 router.get("/", getAuthorController);
 //for getting all author data
 router.get("/admin", getAllAuthorController);
 //for getting an author by email address
-router.get("/admin:email", getAllAuthorController);
+router.get("/admin/:email", getAllAuthorController);
+//for getting authors where isVerified = false
+router.get('/admin/unverified', getUnverifiedAuthorsController);
 router.post("/", addAuthorController);
 router.put("/:email", modifyAuthorController);
 router.delete("/", deleteAuthorController);
