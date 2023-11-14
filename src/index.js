@@ -4,6 +4,7 @@ const session = require("express-session");
 const passport = require("./utils/passport");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./database/connection");
+const compression = require("compression");
 const app = express();
 const router = require("./routes/index");
 const PORT = process.env.PORT || 3030;
@@ -24,6 +25,8 @@ app.use(
 );
 
 sessionStore.sync();
+
+app.use(compression());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
