@@ -8,6 +8,6 @@ const getAwaitingAuthorsController = require("../controllers/awaitingAuthorContr
 router.get("/", getAwaitingAuthorsController);
 router.post("/", addAwaitingAuthorController);
 router.put("/:email", modifyAwaitingAuthorController);
-router.delete("/", deleteAwaitingAuthorController);
+router.delete("/:email", deleteAwaitingAuthorController);
 
 module.exports = router;
