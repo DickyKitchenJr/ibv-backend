@@ -17,6 +17,6 @@ router.get("/admin/:email", getAllAuthorController);
 router.get('/admin/unverified', getUnverifiedAuthorsController);
 router.post("/", addAuthorController);
 router.put("/:email", modifyAuthorController);
-router.delete("/", deleteAuthorController);
+router.delete("/:email", deleteAuthorController);
 
 module.exports = router;
