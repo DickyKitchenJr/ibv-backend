@@ -1,11 +1,13 @@
 const AwaitingAuthor = require("../../models/AwaitingAuthor");
 
 const deleteAwaitingAuthorController = async (req, res) => {
-  const { id } = req.params;
+  const { email } = req.params;
 
   try {
     // Find the AwaitingAuthor by ID
-    const awaitingAuthor = await AwaitingAuthor.findByPk(id);
+    const awaitingAuthor = await AwaitingAuthor.findOne({
+      where: { email },
+    });
 
     if (!awaitingAuthor) {
       return res.status(404).json({ error: "Author not found" });
