@@ -7,7 +7,7 @@ const modifyAwaitingAuthorController = require("../controllers/awaitingAuthorCon
 const getAwaitingAuthorsController = require("../controllers/awaitingAuthorControllers/getAwaitingAuthorController");
 
 router.get("/", passport.authenticate("local"), getAwaitingAuthorsController);
-router.post("/", passport.authenticate("local"), addAwaitingAuthorController);
+router.post("/", addAwaitingAuthorController);
 router.put(
   "/:email",
   passport.authenticate("local"),
