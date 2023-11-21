@@ -123,7 +123,7 @@ const Author = sequelize.define("Author", {
   },
 });
 
-// TODO: erase on production
+
 // opted to use the following as opposed to sequelize-cli for ease of use
 // Author.sync();
 
