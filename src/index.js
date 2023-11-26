@@ -5,7 +5,7 @@ const passport = require("./utils/passport");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./database/connection");
 const compression = require("compression");
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 const router = require("./routes/index");
 const PORT = process.env.PORT || 3030;
@@ -28,7 +28,20 @@ app.use(
 sessionStore.sync();
 
 app.use(compression());
-
+// TODO: set cors options to allow for indiebookvault.com and delete app.use(cors());
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       // Allow requests from indiebookvault.com and its subdomains
+//       if (!origin || origin.startsWith("https://indiebookvault.com")) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     optionsSuccessStatus: 200,
+//   })
+// );
 app.use(cors());
 
 app.use(express.json());
