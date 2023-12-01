@@ -17,7 +17,7 @@
 - mysql2
 - jest
 
-## Accomplishments:
+## Achievements:
 
 - implemented server side validation to ensure that information is properly formatted before allowing it into the database as well as ensuring information does not already exist in the database to prevent duplication
 
