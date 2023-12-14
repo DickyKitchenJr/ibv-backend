@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("../utils/passport");
 const isAdmin = require("../utils/isAdmin");
+const isSignedIn = require("../utils/isSignedIn");
 const deleteAuthorController = require("../controllers/authorControllers/deleteAuthorController");
 const modifyAuthorController = require("../controllers/authorControllers/modifyAuthorController");
 const getAuthorController = require("../controllers/authorControllers/getAuthorController");
@@ -16,13 +16,13 @@ router.get("/admin", isAdmin, getAllAuthorController);
 //for getting an author by email address
 router.get(
   "/admin/:email",
-  passport.authenticate("local"),
+  isSignedIn,
   getAllAuthorController
 );
 //for getting authors where isVerified = false
 router.get("/admin/unverified", isAdmin, getUnverifiedAuthorsController);
-router.post("/", passport.authenticate("local"), addAuthorController);
-router.put("/:email", passport.authenticate("local"), modifyAuthorController);
+router.post("/", isSignedIn, addAuthorController);
+router.put("/:email", isSignedIn, modifyAuthorController);
 router.delete("/:email", isAdmin, deleteAuthorController);
 
 module.exports = router;
