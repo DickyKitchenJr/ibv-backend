@@ -22,6 +22,12 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: sessionStore,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 24 * 60 * 60 * 1000, //expire cookie after 24 hours
+      httpOnly: true,
+      sameSite: "strict",
+    },
   })
 );
 
