@@ -30,11 +30,13 @@ const Author = sequelize.define("Author", {
     allowNull: false,
     get() {
       // parse the stored JSON string back to an array
-      return JSON.parse(this.getDataValue("umbrellaGenre"));
+      // return JSON.parse(this.getDataValue("umbrellaGenre"));
+      const rawValue = this.getDataValue("umbrellaGenre");
+      return rawValue ? rawValue.split("/") : null;
     },
     set(value) {
       // store the array as a JSON string
-      this.setDataValue("umbrellaGenre", JSON.stringify(value));
+      this.setDataValue("umbrellaGenre", value.join("/"));
     },
   },
   subGenre: {
@@ -42,11 +44,13 @@ const Author = sequelize.define("Author", {
     allowNull: false,
     get() {
       // parse the stored JSON string back to an array
-      return JSON.parse(this.getDataValue("subGenre"));
+      // return JSON.parse(this.getDataValue("subGenre"));
+      const rawValue = this.getDataValue("subGenre");
+      return rawValue ? rawValue.split("/") : null;
     },
     set(value) {
       // store the array as a JSON string
-      this.setDataValue("subGenre", JSON.stringify(value));
+      this.setDataValue("subGenre", value.join("/"));
     },
   },
   instagram: {
@@ -122,7 +126,6 @@ const Author = sequelize.define("Author", {
     defaultValue: false,
   },
 });
-
 
 // opted to use the following as opposed to sequelize-cli for ease of use
 // Author.sync();
