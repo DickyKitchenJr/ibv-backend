@@ -7,9 +7,9 @@ const getAuthorController = async (req, res) => {
 
     // Exclude email and isVerified from each author's data
     const sanitizedAuthors = authors.map(
-      ({ email, isVerified, ...rest }) => rest
+      ({ dataValues: { email, isVerified, ...rest } }) => rest
     );
-
+    
     // Return success response
     res.status(200).json({ success: true, authors: sanitizedAuthors });
   } catch (error) {
