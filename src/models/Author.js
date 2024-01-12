@@ -26,32 +26,12 @@ const Author = sequelize.define("Author", {
     },
   },
   umbrellaGenre: {
-    type: DataTypes.STRING, // store as JSON string
+    type: DataTypes.JSON,
     allowNull: false,
-    get() {
-      // parse the stored JSON string back to an array
-      // return JSON.parse(this.getDataValue("umbrellaGenre"));
-      const rawValue = this.getDataValue("umbrellaGenre");
-      return rawValue ? rawValue.split("/") : null;
-    },
-    set(value) {
-      // store the array as a JSON string
-      this.setDataValue("umbrellaGenre", value.join("/"));
-    },
   },
   subGenre: {
-    type: DataTypes.STRING, // store as JSON string
+    type: DataTypes.JSON, 
     allowNull: false,
-    get() {
-      // parse the stored JSON string back to an array
-      // return JSON.parse(this.getDataValue("subGenre"));
-      const rawValue = this.getDataValue("subGenre");
-      return rawValue ? rawValue.split("/") : null;
-    },
-    set(value) {
-      // store the array as a JSON string
-      this.setDataValue("subGenre", value.join("/"));
-    },
   },
   instagram: {
     type: DataTypes.STRING,
