@@ -26,28 +26,12 @@ const AwaitingAuthor = sequelize.define("AwaitingAuthor", {
     },
   },
   umbrellaGenre: {
-    type: DataTypes.STRING, // store as JSON string
+    type: DataTypes.JSON,
     allowNull: false,
-    get() {
-      // parse the stored JSON string back to an array
-      return JSON.parse(this.getDataValue("umbrellaGenre"));
-    },
-    set(value) {
-      // store the array as a JSON string
-      this.setDataValue("umbrellaGenre", JSON.stringify(value));
-    },
   },
   subGenre: {
-    type: DataTypes.STRING, // store as JSON string
+    type: DataTypes.JSON,
     allowNull: false,
-    get() {
-      // parse the stored JSON string back to an array
-      return JSON.parse(this.getDataValue("subGenre"));
-    },
-    set(value) {
-      // store the array as a JSON string
-      this.setDataValue("subGenre", JSON.stringify(value));
-    },
   },
   instagram: {
     type: DataTypes.STRING,
@@ -120,6 +104,6 @@ const AwaitingAuthor = sequelize.define("AwaitingAuthor", {
 
 
 // opted to use the following as opposed to sequelize-cli for ease of use
-// AwaitingAuthor.sync();
+AwaitingAuthor.sync();
 
 module.exports = AwaitingAuthor;
