@@ -104,6 +104,6 @@ const AwaitingAuthor = sequelize.define("AwaitingAuthor", {
 
 
 // opted to use the following as opposed to sequelize-cli for ease of use
-AwaitingAuthor.sync();
+// AwaitingAuthor.sync();
 
 module.exports = AwaitingAuthor;
