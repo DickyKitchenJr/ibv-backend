@@ -23,10 +23,10 @@ app.use(
     saveUninitialized: false,
     store: sessionStore,
     cookie: {
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === "production", //currently false
       maxAge: 24 * 60 * 60 * 1000, //expire cookie after 24 hours
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "lax", //"strict",
     },
   })
 );
@@ -34,21 +34,21 @@ app.use(
 sessionStore.sync();
 
 app.use(compression());
-// TODO: set cors options to allow for indiebookvault.com and delete app.use(cors());
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       // Allow requests from indiebookvault.com and its subdomains
-//       if (!origin || origin.startsWith("https://indiebookvault.com")) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     optionsSuccessStatus: 200,
-//   })
-// );
-app.use(cors());
+
+const allowedOrigins = ["http://localhost:5173", "https://indiebookvault.com", "https://admin/indiebookvault.com"];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
