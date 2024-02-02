@@ -14,15 +14,14 @@ router.get("/", getAuthorController);
 //for getting all author data
 router.get("/admin", isAdmin, getAllAuthorController);
 //for getting an author by email address
-router.get(
-  "/admin/:email",
-  isSignedIn,
-  getAllAuthorController
-);
+router.get("/:email", isSignedIn, getAllAuthorController);
 //for getting authors where isVerified = false
 router.get("/admin/unverified", isAdmin, getUnverifiedAuthorsController);
+//for posting author listings to the database
 router.post("/", isSignedIn, addAuthorController);
+// for modifying author listings using email
 router.put("/:email", isSignedIn, modifyAuthorController);
-router.delete("/:email", isAdmin, deleteAuthorController);
+// delete request are only allowed to admins
+router.delete("/admin/:email", isAdmin, deleteAuthorController);
 
 module.exports = router;
