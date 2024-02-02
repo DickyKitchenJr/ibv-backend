@@ -1,4 +1,4 @@
-const isAuthenticated = (req, res, next) => {
+const isSignedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
@@ -6,4 +6,4 @@ const isAuthenticated = (req, res, next) => {
   res.status(401).json({ error: "Unauthorized" });
 };
 
-module.exports = isAuthenticated;
+module.exports = isSignedIn;
