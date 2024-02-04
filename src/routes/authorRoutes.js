@@ -16,7 +16,7 @@ router.get("/admin", isAdmin, getAllAuthorController);
 //for getting an author by email address
 router.get("/:email", isSignedIn, getAllAuthorController);
 //for getting authors where isVerified = false
-router.get("/admin/unverified", isAdmin, getUnverifiedAuthorsController);
+router.get("/unverified", isSignedIn, getUnverifiedAuthorsController);
 //for posting author listings to the database
 router.post("/", isSignedIn, addAuthorController);
 // for modifying author listings using email
