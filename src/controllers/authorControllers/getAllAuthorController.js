@@ -2,7 +2,7 @@ const Author = require("../../models/Author");
 
 //this controller is used to provide the admin facing front-end of indiebookvault.com with all author data or specified by email
 const getAllAuthorController = async (req, res) => {
-  const { email } = req.query;
+  const { email } = req.params;
 
   try {
     if (email) {
