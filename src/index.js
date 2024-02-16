@@ -35,7 +35,7 @@ sessionStore.sync();
 
 app.use(compression());
 
-const allowedOrigins = ["http://localhost:5173", "https://indiebookvault.com", "https://admin/indiebookvault.com"];
+const allowedOrigins = ["http://localhost:5173", "https://indiebookvault.com", "https://admin.indiebookvault.com"];
 
 const corsOptions = {
   origin: function (origin, callback) {
